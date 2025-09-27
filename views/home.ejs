@@ -17,8 +17,15 @@
                 Home</a>
         </nav>
     </header>
-    <main class="flex flex-col items-center justify-center min-h-[60vh] bg-gray-50">
-        <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Welcome to airbnb</h1>
+    <main class="flex flex-col items-center  min-h-[60vh] bg-gray-50">
+        <h1 class="text-4xl font-extrabold text-gray-800 mt-4">Welcome to airbnb</h1>
+        <ul class="space-y-4 mt-3">
+        <% registeredHomes.forEach(home => { %>
+          <li class="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <span class="text-lg text-gray-800"><%= home.houseName %></span>
+          </li>
+        <% }) %>
+      </ul>
     </main>
 </body>
 
