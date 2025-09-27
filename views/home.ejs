@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>airbnb</title>
-    <link rel="stylesheet" href="/output.css">
+<%- include('partials/head') %>
 </head>
-
 <body>
-    <header class="flex items-center justify-between p-6 bg-white shadow-md">
-        <a href="/" class="text-2xl font-bold text-pink-600">airbnb</a>
-        <nav class="space-x-4">
-            <a href="/" class="text-gray-700 hover:text-pink-600 font-medium">Get Homes</a>
-            <a href="/host/add-home" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition">Add
-                Home</a>
-        </nav>
-    </header>
-    <main class="flex flex-col items-center  min-h-[60vh] bg-gray-50">
-        <h1 class="text-4xl font-extrabold text-gray-800 mt-4">Welcome to airbnb</h1>
-        <ul class="space-y-4 mt-3">
+    <%- include('partials/nav') %>
+    <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-xl">
+      <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+        Here are our registered homes:
+      </h2>
+      <ul class="space-y-4">
         <% registeredHomes.forEach(home => { %>
           <li class="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <span class="text-lg text-gray-800"><%= home.houseName %></span>

@@ -8,7 +8,7 @@ const rootDir = require('../utils/pathUtil');
 
 
 hostRouter.get("/add-home", (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'addHome.html'));
+    res.render('addHome', {pageTitle: 'Add home to airbnb'});
 });
 
 const registeredHomes = [];
@@ -16,7 +16,7 @@ const registeredHomes = [];
 hostRouter.post("/add-home", (req, res, next) => {
     console.log(req.body.houseName);
     registeredHomes.push({houseName: req.body.houseName});
-    res.sendFile(path.join(rootDir, 'views', 'homeAdded.html'));
+    res.render('homeAdded', {pageTitle: 'Added homes'});
 });
 
 
