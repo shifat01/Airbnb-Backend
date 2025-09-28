@@ -14,7 +14,6 @@
     --color-green-600: oklch(62.7% 0.194 149.214);
     --color-pink-600: oklch(59.2% 0.249 0.584);
     --color-pink-700: oklch(52.5% 0.223 3.958);
-    --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
@@ -22,9 +21,6 @@
     --spacing: 0.25rem;
     --container-md: 28rem;
     --container-xl: 36rem;
-    --container-4xl: 56rem;
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
@@ -42,7 +38,6 @@
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
-    --radius-4xl: 2rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -198,6 +193,9 @@
   }
 }
 @layer utilities {
+  .static {
+    position: static;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
