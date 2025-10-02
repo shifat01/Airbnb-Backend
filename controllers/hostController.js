@@ -6,6 +6,16 @@ exports.getAddHome = (req, res, next) => {
     res.render('host/addHome', {pageTitle: 'Add home to airbnb'});
 }
 
+// get homes for host/admin
+exports.getHostHomes = (req, res, next) => {
+  Home.fetchAll((registeredHomes) =>
+    res.render("host/host-home-list", {
+      registeredHomes: registeredHomes,
+      pageTitle: "Homes list"
+    })
+  );
+};
+
 // Add home on post request
 exports.postAddHome = (req, res, next) => {
     console.log(req.body);
@@ -16,15 +26,3 @@ exports.postAddHome = (req, res, next) => {
 
     res.render('host/homeAdded', {pageTitle: 'Added homes'});
 }
-
-// get registered homes
-exports.getHomes = (req, res, next) => {
-  Home.fetchAll((registeredHomes) =>
-    res.render("store/home-list", {
-      registeredHomes: registeredHomes,
-      pageTitle: "Airbnb Home"
-    })
-  );
-};
-
-exports.registeredHomes = this.registeredHomes;
