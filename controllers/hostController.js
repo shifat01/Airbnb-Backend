@@ -22,7 +22,7 @@ exports.postAddHome = (req, res, next) => {
     const {houseName, price, location, photoUrl} = req.body;
 
     const home = new Home(houseName, price, location, photoUrl);
-    home.save();
+    home.save(); 
 
     res.render('host/homeAdded', {pageTitle: 'Added homes'});
 }
