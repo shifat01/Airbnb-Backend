@@ -6,13 +6,13 @@
 
   <body>
     <%- include('../partials/nav') %>
-      <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-2xl">
+      <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-8xl">
         <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
           Favourites Homes:
         </h2>
         <!-- Card -->
-        <div class="gap-5 flex">
-          <% registeredHomes.forEach(home=> { %>
+        <div class="gap-5  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+          <% favouriteHomes.forEach(home=> { %>
             <div class="bg-white border rounded-2xl shadow-md hover:shadow-xl transition duration-300">
               <!-- Image -->
               <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>"
@@ -24,11 +24,9 @@
                 </h3>
                 <p class="text-gray-600 mb-2">🚩 <%= home.location %>
                 </p>
-                <p class="text-lg font-bold text-green-600 mb-4">৳ <%= home.price %> /night</p>
-                <!-- Button -->
-                <button class="bg-green-500 p-2 pl-4 pr-4 rounded-lg">
-                  Book
-                </button>
+                <p class="text-lg font-bold text-green-600 mb-4">$ <%= home.price %> /night</p>
+               
+                <a href="/homes/<%= home.id %>" class="bg-blue-500 text-white p-2 pl-4 pr-4 rounded-lg">Details</a>
               </div>
             </div>
             <% }) %>
