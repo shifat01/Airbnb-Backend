@@ -18,8 +18,15 @@ module.exports = class Favourite {
   }
 
   static getFavourites(callback) {
-    fs.readFile(favouriteDataPath, (err, data, ) => {
+    fs.readFile(favouriteDataPath, (err, data) => {
       callback(!err ? JSON.parse(data) : []);
+    });
+  }
+
+  static deleteById(delHomeId, callback) {
+    Favourite.getFavourites((homeIds) => {
+      homeIds = homeIds.filter((homeId) => delHomeId !== homeId);
+      fs.writeFile(favouriteDataPath, JSON.stringify(homeIds), callback);
     });
   }
 };

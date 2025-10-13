@@ -26,8 +26,10 @@
                 </p>
                 <p class="text-lg font-bold text-green-600 mb-4">$ <%= home.price %> /night</p>
                 <!-- Button -->
-                <%- include('../partials/favourite', {home: home}) %>
-                <a href="/homes/<%= home.id %>" class="bg-blue-500 text-white p-2 pl-4 pr-4 rounded-lg">Details</a>
+                <div class="flex gap-2">
+                  <a href="/homes/<%= home.id %>" class="bg-blue-500 text-white p-1 pl-4 pr-4 rounded-lg">Details</a>
+                  <%- include('../partials/favourite', {home: home}) %>
+                </div>
               </div>
             </div>
             <% }) %>
