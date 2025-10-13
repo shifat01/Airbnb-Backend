@@ -1,28 +1,62 @@
 //Local Module
-const Home = require('../models/home');
+// const home = require("../models/home");
+const Home = require("../models/home");
 
 // Add home on get request
 exports.getAddHome = (req, res, next) => {
-    res.render('host/addHome', {pageTitle: 'Add home to airbnb'});
-}
+  res.render("host/edit-home", {
+    pageTitle: "Add home to airbnb",
+    editing: false,
+  });
+};
+
+// Edit home on get request
+exports.getEditHome = (req, res, next) => {
+  const homeId = req.params.homeId;
+  const editing = req.query.editing === "true";
+
+  Home.findById(homeId, (home) => {
+    if (!home) {
+      console.log("home not found for editing");
+      return res.redirect("/host/host-home-list");
+    }
+
+    console.log(homeId, editing, home);
+    res.render("host/edit-home", {
+      home: home,
+      pageTitle: "edit your home",
+      editing: editing,
+    });
+  });
+};
 
 // get homes for host/admin
 exports.getHostHomes = (req, res, next) => {
   Home.fetchAll((registeredHomes) =>
     res.render("host/host-home-list", {
       registeredHomes: registeredHomes,
-      pageTitle: "Homes list"
+      pageTitle: "Homes list",
     })
   );
 };
 
 // Add home on post request
 exports.postAddHome = (req, res, next) => {
-    console.log(req.body);
-    const {houseName, price, location, photoUrl} = req.body;
+  console.log(req.body);
+  const { houseName, price, location, photoUrl } = req.body;
 
-    const home = new Home(houseName, price, location, photoUrl);
-    home.save(); 
+  const home = new Home(houseName, price, location, photoUrl);
+  home.save();
 
-    res.render('host/homeAdded', {pageTitle: 'Added homes'});
-}
+  res.redirect("/host/host-home-list");
+};
+
+// edit home on post request
+exports.postEditHome = (req, res, next) => {
+  const { id, houseName, price, location, photoUrl } = req.body;
+  const home = new Home(houseName, price, location, photoUrl);
+  home.id = id;
+  home.save();
+
+  res.redirect("/host/host-home-list");
+};
