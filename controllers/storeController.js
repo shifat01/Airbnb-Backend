@@ -60,7 +60,7 @@ exports.postAddToFavourite = (req, res, next) => {
 
 
 // post Remove from favourite
-exports.postRemoveFromFavourite = (req, res, next) => {
+exports.postRemoveFromFavourite = (req, res, next) => { 
   const homeId = req.params.homeId;
   Favourite.deleteById(homeId, error => {
     if (error){
